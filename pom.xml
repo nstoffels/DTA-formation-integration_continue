@@ -9,7 +9,7 @@
 	<modules>
 		<module>bankonet-client-exemple</module> <!-- nom du répertoire, pas du projet. -->
 		<module>bankonet-client</module>
-		<module>bankonet-data</module>
+<!-- 		<module>bankonet-data</module> -->
 	</modules>
 
 	<dependencyManagement>
