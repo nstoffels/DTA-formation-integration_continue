@@ -5,4 +5,5 @@ begin
 	insert into client (id, nom) values (4,durant)
 	insert into client (id, nom) values (5,dufland)
 	insert into client (id, nom) values (6,duflant)
+	
 end 
