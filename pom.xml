@@ -63,4 +63,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<!-- je veux que ça fonctionne ! -->
 </project>
