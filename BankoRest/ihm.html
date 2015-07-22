@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Bankonet avec du REST</title>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-route.min.js"></script>
+	  
+	
+		
+		<style>
+			td{
+				border : 1px solid black;
+				width : 30px;
+				height : 3px;
+				margin : 0;
+				padding : 0;
+				}
+
+		</style>
+		
+	</head>
+
+	<body ng-app="liste">
+		<header>
+			<h1>Liste des clients lien entre JAVA REST et js</h1>
+		</header>
+		
+		<main ng-controller="Ctrl as ctrl">	<!-- test -->
+			<table border="1" ng-controller="IhmController as homeCtrl">
+				<tr ng-repeat="liste in homeCtrl.liste ">
+
+					<td>{{liste.name}}</td>
+					<td>{{liste.id}}</td>
+				</tr>
+			</table>
+			
+			  <script>
+		
+			angular.module("liste",["ngRoute"])
+
+				.factory("IhmService", function ($http) {
+		
+				var apiUrl = "http://localhost:8080/BankoRest/api/clients/list";
+				return {
+					getAll: function () {
+						return $http.get(apiUrl)
+							.then(function (result) {
+								return result.data;
+							})
+							.then(function (liste) {
+								return liste.filter(function (liste) {
+								}.bind(this))
+							}.bind(this))
+		
+			.controller("Ctrl",function(IhmService){
+				var ctrl=this;
+
+
+				
+				
+				function fetchIhm(){	
+					
+						IhmService.getAll()
+							.then(function(liste){
+								
+								ctrl.liste=liste
+							})
+					}
+
+					fetchIhm();
+				
+			})
+			.controller("IhmController", function (IhmService) {
+				var homeCtrl = this;
+
+				function fetchIhm() {
+					IhmService.getAll()
+						.then(function (liste) {
+							homeCtrl.liste = liste
+						})
+				}
+				fetchIhm()
+
+			})
+		</script>
+	</body>
+</html>
+
